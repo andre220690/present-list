@@ -145,6 +145,12 @@ button:disabled {
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(210px, 30vh);
+  gap: 18px;
+  align-content: start;
+  padding: 20px;
   background: linear-gradient(135deg, #ffe1b4, #fff7e8 45%, #d8f8fa);
 }
 
@@ -152,6 +158,7 @@ button:disabled {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.64)),
     radial-gradient(circle at 20% 15%, rgba(245, 72, 137, 0.08), transparent 32%),
@@ -170,30 +177,15 @@ button:disabled {
 }
 
 .backdropPhoto {
-  position: absolute;
-  width: clamp(170px, 23vw, 310px);
-  aspect-ratio: 4 / 5;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
   object-fit: cover;
   border-radius: 8px;
   opacity: 0.68;
   box-shadow: var(--shadow);
   filter: brightness(1.18) saturate(1.18) contrast(1.04);
 }
-
-.photo1 { left: -4%; top: -5%; }
-.photo2 { left: 21%; top: 3%; }
-.photo3 { left: 48%; top: -4%; }
-.photo4 { right: -5%; top: 6%; }
-.photo5 { left: -3%; top: 34%; }
-.photo6 { left: 27%; top: 38%; }
-.photo7 { right: -2%; top: 36%; }
-.photo8 { left: 12%; bottom: -6%; }
-.photo9 { left: 42%; bottom: -7%; }
-.photo10 { right: 7%; bottom: -5%; }
-.photo11 { left: 5%; top: 66%; }
-.photo12 { left: 58%; top: 63%; }
-.photo13 { left: 73%; top: 20%; }
-.photo14 { left: 35%; top: 17%; }
 
 .pageContent,
 .adminPage {
@@ -642,21 +634,12 @@ h2 {
   }
 
   .backdropPhoto {
-    width: clamp(145px, 43vw, 210px);
+    border-radius: 6px;
   }
 
-  .photo1 { left: -8%; top: -3%; }
-  .photo2 { right: -7%; top: 5%; }
-  .photo3 { left: -5%; top: 26%; }
-  .photo4 { right: -8%; top: 33%; }
-  .photo5 { left: -7%; top: 56%; }
-  .photo6 { right: -6%; top: 64%; }
-  .photo7 { left: 24%; bottom: -7%; }
-  .photo8 { left: 28%; top: 14%; }
-  .photo9 { left: 26%; top: 45%; }
-  .photo10 { left: 3%; bottom: -11%; }
-  .photo11 { right: 4%; bottom: -12%; }
-  .photo12 { left: -10%; top: 78%; }
-  .photo13 { right: -10%; top: 84%; }
-  .photo14 { left: 30%; top: 72%; }
+  .photoBackdrop {
+    grid-auto-rows: minmax(140px, 24vh);
+    gap: 8px;
+    padding: 8px;
+  }
 }
