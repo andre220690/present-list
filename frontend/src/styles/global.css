@@ -1,0 +1,662 @@
+:root {
+  --peach: #ffdba5;
+  --peach-soft: #fff0d8;
+  --teal: #079da9;
+  --teal-dark: #087681;
+  --pink: #f54889;
+  --purple: #6f2d8c;
+  --ink: #351d44;
+  --muted: #796982;
+  --surface: rgba(255, 255, 255, 0.88);
+  --shadow: 0 18px 45px rgba(75, 31, 91, 0.18);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--peach);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+a {
+  color: inherit;
+}
+
+.invitationPage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 62vh 18px 24px;
+  background-color: var(--peach);
+  background-image:
+    linear-gradient(90deg, rgba(255, 219, 165, 0.94), transparent 18%, transparent 82%, rgba(255, 219, 165, 0.94)),
+    var(--invitation-bg);
+  background-size: auto 100%, auto 100%;
+  background-position: center, center top;
+  background-repeat: no-repeat;
+}
+
+.invitationShell {
+  width: min(80vw, 45vh);
+  display: grid;
+  justify-items: center;
+}
+
+.giftCta,
+.primaryButton,
+.secondaryButton,
+.mutedButton,
+.dangerButton {
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.giftCta,
+.primaryButton {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(245, 72, 137, 0.24);
+}
+
+.giftCta {
+  width: 100%;
+  border: 3px solid #fff;
+  min-height: 112px;
+  padding: 28px 34px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.08;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(245, 72, 137, 0.24), 0 0 0 3px rgba(111, 45, 140, 0.18);
+}
+
+.secondaryButton {
+  background: #fff;
+  color: var(--purple);
+  border: 2px solid rgba(111, 45, 140, 0.2);
+}
+
+.mutedButton {
+  background: #eee6f2;
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.dangerButton {
+  background: #fff0f4;
+  color: #9b1740;
+  border: 2px solid rgba(155, 23, 64, 0.22);
+}
+
+.giftCta:hover,
+.primaryButton:hover,
+.secondaryButton:hover,
+.dangerButton:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+:focus-visible {
+  outline: 3px solid #ffe96a;
+  outline-offset: 3px;
+}
+
+.giftsPage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--peach-soft);
+}
+
+.photoBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffe1b4, #fff7e8 45%, #d8f8fa);
+}
+
+.photoBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0.64)),
+    radial-gradient(circle at 20% 15%, rgba(245, 72, 137, 0.08), transparent 32%),
+    radial-gradient(circle at 88% 25%, rgba(7, 157, 169, 0.1), transparent 28%);
+}
+
+.photoBackdropNeutral::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 18%, transparent 0 8px, rgba(111, 45, 140, 0.32) 9px 11px, transparent 12px),
+    radial-gradient(circle at 80% 25%, transparent 0 9px, rgba(245, 72, 137, 0.28) 10px 12px, transparent 13px),
+    radial-gradient(circle at 40% 78%, transparent 0 7px, rgba(7, 157, 169, 0.28) 8px 10px, transparent 11px);
+  background-size: 150px 150px;
+}
+
+.backdropPhoto {
+  position: absolute;
+  width: clamp(170px, 23vw, 310px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0.68;
+  box-shadow: var(--shadow);
+  filter: brightness(1.18) saturate(1.18) contrast(1.04);
+}
+
+.photo1 { left: -4%; top: -5%; }
+.photo2 { left: 21%; top: 3%; }
+.photo3 { left: 48%; top: -4%; }
+.photo4 { right: -5%; top: 6%; }
+.photo5 { left: -3%; top: 34%; }
+.photo6 { left: 27%; top: 38%; }
+.photo7 { right: -2%; top: 36%; }
+.photo8 { left: 12%; bottom: -6%; }
+.photo9 { left: 42%; bottom: -7%; }
+.photo10 { right: 7%; bottom: -5%; }
+.photo11 { left: 5%; top: 66%; }
+.photo12 { left: 58%; top: 63%; }
+.photo13 { left: 73%; top: 20%; }
+.photo14 { left: 35%; top: 17%; }
+
+.pageContent,
+.adminPage {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.giftsHeader,
+.adminHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.headlineBlock {
+  flex-basis: 100%;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  color: var(--purple);
+  font-size: clamp(2rem, 7vw, 4.25rem);
+  line-height: 1.02;
+  margin-bottom: 12px;
+}
+
+h2 {
+  color: var(--purple);
+  font-size: 1.45rem;
+}
+
+.headlineBlock p {
+  font-size: 1.08rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  max-width: 760px;
+}
+
+.statePanel,
+.stateText {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+.stateText {
+  box-shadow: none;
+  margin: 0 0 12px;
+}
+
+.errorText {
+  color: #9b1740;
+}
+
+.successText,
+.availableText {
+  color: #087244;
+}
+
+.reservedText {
+  color: var(--purple);
+}
+
+.reservationInfo {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(111, 45, 140, 0.1);
+  border: 1px solid rgba(111, 45, 140, 0.18);
+}
+
+.reservationInfo p {
+  margin-bottom: 4px;
+}
+
+.reservationInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.giftGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.giftCard {
+  position: relative;
+  min-height: 260px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 160ms ease, filter 160ms ease, opacity 160ms ease;
+}
+
+.giftCard:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.giftCard.reservedCard {
+  background: #ededed;
+  color: #777;
+  box-shadow: 0 12px 28px rgba(70, 70, 70, 0.16);
+}
+
+.giftCard.unavailable {
+  cursor: not-allowed;
+}
+
+.giftCard.unavailable:disabled {
+  opacity: 1;
+}
+
+.giftImage {
+  width: 100%;
+  height: 198px;
+  object-fit: cover;
+  display: block;
+  background: #f4f0f6;
+}
+
+.giftCard.reservedCard .giftImage {
+  filter: grayscale(1);
+  opacity: 0.62;
+}
+
+.giftName {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.giftStatus {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #fff;
+  z-index: 1;
+}
+
+.giftStatus.available {
+  background: #138a4a;
+}
+
+.giftStatus.reserved {
+  background: #c9253a;
+}
+
+.modalLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(46, 19, 58, 0.48);
+}
+
+.nestedLayer {
+  z-index: 11;
+  background: rgba(46, 19, 58, 0.35);
+}
+
+.modal,
+.reserveModal,
+.adminLoginForm,
+.adminForm,
+.adminGift {
+  width: min(100%, 560px);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.modal {
+  position: relative;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  padding: 18px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.iconButton {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--purple);
+  font-size: 1.8rem;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(75, 31, 91, 0.16);
+  cursor: pointer;
+}
+
+.modalImage {
+  width: 100%;
+  max-height: 46vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f7f1fa;
+  margin-bottom: 16px;
+}
+
+.modalDescription {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.linkButton {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.modalActions,
+.adminActions,
+.adminGiftActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.reserveModal,
+.adminLoginForm,
+.adminForm {
+  position: relative;
+  padding: 20px;
+}
+
+.fieldLabel {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+  color: var(--purple);
+  font-weight: 800;
+}
+
+.fieldLabel input,
+.fieldLabel textarea {
+  width: 100%;
+  border: 2px solid rgba(111, 45, 140, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--ink);
+  background: #fff;
+}
+
+.clipboardPasteZone {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 2px dashed rgba(111, 45, 140, 0.34);
+  border-radius: 8px;
+  background: rgba(255, 240, 216, 0.72);
+  color: var(--purple);
+  font-weight: 800;
+}
+
+.clipboardPasteZone:focus-visible {
+  outline: 3px solid #ffe96a;
+  outline-offset: 3px;
+}
+
+.pastedImagePreview {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.pastedImagePreview img {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.adminLoginPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--peach), #d9f8fa);
+}
+
+.adminPage {
+  display: grid;
+  gap: 18px;
+}
+
+.adminForm,
+.adminList {
+  width: 100%;
+}
+
+.adminList {
+  display: grid;
+  gap: 12px;
+}
+
+.adminGift {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+}
+
+.adminGift img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f7f1fa;
+}
+
+.adminGift h3 {
+  margin-bottom: 6px;
+}
+
+.adminGift p {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .invitationPage {
+    padding-top: 62dvh;
+    background-image: var(--invitation-bg);
+    background-size: 100% auto;
+    background-position: center top;
+  }
+
+  .giftCta {
+    width: 80vw;
+    min-height: 150px;
+    padding: 34px 22px;
+    border-width: 5px;
+    font-size: clamp(2.65rem, 10vw, 3.4rem);
+  }
+
+  .giftGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+
+  .pageContent,
+  .adminPage {
+    padding: 14px;
+  }
+
+  .headlineBlock {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  .giftGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .giftCard {
+    min-height: 168px;
+  }
+
+  .giftImage {
+    height: clamp(92px, 30vw, 150px);
+  }
+
+  .giftName {
+    min-height: 54px;
+    padding: 8px;
+    font-size: 0.82rem;
+    line-height: 1.16;
+  }
+
+  .giftStatus {
+    top: 6px;
+    left: 6px;
+    padding: 4px 6px;
+    font-size: 0.64rem;
+  }
+
+  .modalActions > *,
+  .adminActions > *,
+  .adminGiftActions > * {
+    width: 100%;
+  }
+
+  .adminGift {
+    grid-template-columns: 92px 1fr;
+  }
+
+  .adminGift img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .adminGiftActions {
+    grid-column: 1 / -1;
+  }
+
+  .pastedImagePreview {
+    grid-template-columns: 1fr;
+  }
+
+  .backdropPhoto {
+    width: clamp(145px, 43vw, 210px);
+  }
+
+  .photo1 { left: -8%; top: -3%; }
+  .photo2 { right: -7%; top: 5%; }
+  .photo3 { left: -5%; top: 26%; }
+  .photo4 { right: -8%; top: 33%; }
+  .photo5 { left: -7%; top: 56%; }
+  .photo6 { right: -6%; top: 64%; }
+  .photo7 { left: 24%; bottom: -7%; }
+  .photo8 { left: 28%; top: 14%; }
+  .photo9 { left: 26%; top: 45%; }
+  .photo10 { left: 3%; bottom: -11%; }
+  .photo11 { right: 4%; bottom: -12%; }
+  .photo12 { left: -10%; top: 78%; }
+  .photo13 { right: -10%; top: 84%; }
+  .photo14 { left: 30%; top: 72%; }
+}

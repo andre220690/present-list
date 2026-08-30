@@ -1,0 +1,13 @@
+bin/
+obj/
+node_modules/
+dist/
+.npm-cache/
+*.tsbuildinfo
+.tmp/
+.env
+.DS_Store
+backend/BirthdayGifts.Api/uploads/
+frontend/.vite/
+TestResults/
+playwright-report/
